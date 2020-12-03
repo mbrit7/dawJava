@@ -1,9 +1,7 @@
-/*
- *
- * Author: Manuel Brito
- * Program that order 10 numbers and then show the min and max introduced number.
+/**
+ * @author Manuel Brito
+ *     <p>Program that order 10 numbers and then show the min and max introduced number.
  */
-
 package arrays1dimen;
 
 import java.util.Scanner;
@@ -17,7 +15,7 @@ public class Ej5MaxMin {
     System.out.println("--- The program show the min and max introduced number ---\n");
     System.out.println("The user introduce ten numbers...\n");
 
-    int[] numbers = {1, 5, 6, 3, 8, 3, 12, 45, 56, 10};
+    int[] numbers = {5, 1, 6, 3, 8, 3, 12, 45, 56, 10};
     int max = 0;
     int min = 0;
 
@@ -32,18 +30,12 @@ public class Ej5MaxMin {
     //      counter++;
     //    }
 
-    //    for (int i : numbers) {
-    //      //      System.out.println("\n" + i);
-    //
-    //      System.out.println(Math.max(i, numbers[i]));
-    //    }
+    for (int i : numbers) {
+      if (i > max) {
+        max = i;
 
-    for (int i = 0; i < numbers.length; i++) {
-      //      System.out.println(i);
-      if (numbers[i] > max) {
-        max = numbers[i];
-      } else if (numbers[i] < min) {
-        min = numbers[i];
+      } else if (i < max) {
+        min = i;
       }
     }
 
