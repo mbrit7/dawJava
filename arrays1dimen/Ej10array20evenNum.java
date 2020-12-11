@@ -28,11 +28,11 @@ public class Ej10array20evenNum {
     /** Showing the array */
     for (int i : array) {
 
-      System.out.println(index + ". " + i);
+      System.out.print(index + ". " + i + "| ");
 
       index++;
     }
-    System.out.println();
+    System.out.println("\n");
 
     /** Showing the even numbers in the array */
     for (int i : array) {
@@ -47,8 +47,11 @@ public class Ej10array20evenNum {
    * @param num the introduced number
    */
   public static void even(int num) {
+
     if (num % 2 == 0) {
       System.out.println(num + " es primo");
+    } else {
+      System.out.println(num + " no es primo");
     }
   }
 }

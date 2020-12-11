@@ -50,12 +50,11 @@ public class Ej8TemperatureDiagram {
         for (int j = 0; j < i; j++) {
 
           System.err.print("*");
-          System.exit(1);
+          System.exit(0);
         }
 
       } else {
         for (int j = 0; j < i; j++) {
-
           System.out.print("*");
         }
       }
