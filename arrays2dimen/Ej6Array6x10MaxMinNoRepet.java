@@ -11,8 +11,8 @@ public class Ej6Array6x10MaxMinNoRepet {
   static final int ROWS = 6;
 
   static final int COLUMS = 10;
-  // final static int FIRST_RANDOM = 0;
-  // final static int LAST_RANDOM = 1000;
+  static final int FIRST_RANDOM = 0;
+  static final int LAST_RANDOM = 1000;
 
   public static void main(String[] args) {
 
@@ -25,6 +25,7 @@ public class Ej6Array6x10MaxMinNoRepet {
 
     System.out.println();
 
+    /** Calculate the max and min number */
     int max = maxNumber(array);
     int min = minNumber(array);
 
@@ -32,21 +33,42 @@ public class Ej6Array6x10MaxMinNoRepet {
   }
 
   /**
-   * Function for fill an array passing it via parameter. Fill it with thirty random
-   * integer numbers between 0 and 1000.
+   * Function for fill an array passing it via parameter. Fill it with thirty random integer numbers
+   * between 0 and 1000.
    *
    * @param array the array to fill
    * @return the filled array
    */
   public static int[][] fillArray(int[][] array) {
-    for (int ROWS = 0; ROWS < 6; ROWS++) {
-      for (int COLUMS = 0; COLUMS < 10; COLUMS++) {
 
-        // Generate thirty random numbers between 0 and 1000
-        for (int j2 = 0; j2 < 30; j2++) {
-          int randomNum = (int) (Math.random() * 1001);
-          array[ROWS][COLUMS] = randomNum;
-        }
+    /** Generating non repeatable random numbers between 0 and 1000 */
+
+    /**
+     * In this array I will save true if the random number is in the array and false if isn't in the
+     * array
+     */
+    boolean[] isInArray = new boolean[LAST_RANDOM - FIRST_RANDOM + 1];
+
+    /** Init the array with false, now we don`t any number repeated. */
+    for (int i = 0; i < isInArray.length; i++) {
+      isInArray[i] = false;
+    }
+
+    /** Go through the array 'array' */
+    for (int row = 0; row < ROWS; row++) {
+      for (int colums = 0; colums < COLUMS; colums++) {
+
+        // Generating the random numbers between 0 and 1000
+        int randomNum;
+        do {
+
+          randomNum = FIRST_RANDOM + (int) (Math.random() * (LAST_RANDOM - FIRST_RANDOM + 1));
+
+        } while (isInArray[randomNum - FIRST_RANDOM]);
+
+        isInArray[randomNum - FIRST_RANDOM] = true;
+
+        array[row][colums] = randomNum;
       }
     }
     return array;
@@ -58,9 +80,9 @@ public class Ej6Array6x10MaxMinNoRepet {
    * @param array the array to show
    */
   public static void showArray(int[][] array) {
-    for (int ROWS = 0; ROWS < 6; ROWS++) {
-      for (int COLUMS = 0; COLUMS < 10; COLUMS++) {
-        System.out.printf("%5d ", array[ROWS][COLUMS]);
+    for (int row = 0; row < ROWS; row++) {
+      for (int colums = 0; colums < COLUMS; colums++) {
+        System.out.printf("%5d ", array[row][colums]);
       }
       System.out.println();
     }
@@ -73,11 +95,11 @@ public class Ej6Array6x10MaxMinNoRepet {
    */
   public static int maxNumber(int[][] array) {
     int max = Integer.MIN_VALUE;
-    for (int ROWS = 0; ROWS < 6; ROWS++) {
-      for (int COLUMS = 0; COLUMS < 10; COLUMS++) {
+    for (int row = 0; row < ROWS; row++) {
+      for (int colums = 0; colums < COLUMS; colums++) {
 
-        if (array[ROWS][COLUMS] > max) {
-          max = array[ROWS][COLUMS];
+        if (array[row][colums] > max) {
+          max = array[row][colums];
         }
       }
     }
@@ -92,11 +114,11 @@ public class Ej6Array6x10MaxMinNoRepet {
    */
   public static int minNumber(int[][] array) {
     int min = Integer.MAX_VALUE;
-    for (int ROWS = 0; ROWS < 6; ROWS++) {
-      for (int COLUMS = 0; COLUMS < 10; COLUMS++) {
+    for (int row = 0; row < ROWS; row++) {
+      for (int colums = 0; colums < COLUMS; colums++) {
 
-        if (array[ROWS][COLUMS] < min) {
-          min = array[ROWS][COLUMS];
+        if (array[row][colums] < min) {
+          min = array[row][colums];
         }
       }
     }
@@ -112,14 +134,14 @@ public class Ej6Array6x10MaxMinNoRepet {
    */
   public static void maxMinPosition(int[][] array, int max, int min) {
     // Go through the array to know the position where is the max and min number
-    for (int rowPosi = 0; rowPosi < ROWS; rowPosi++) {
-      for (int columnsPosi = 0; columnsPosi < COLUMS; columnsPosi++) {
-        if (array[rowPosi][columnsPosi] == max) {
+    for (int rowNum = 0; rowNum < ROWS; rowNum++) {
+      for (int columnNum = 0; columnNum < COLUMS; columnNum++) {
+        if (array[rowNum][columnNum] == max) {
           System.out.println(
-              "The max " + max + " is in the row " + rowPosi + " column " + columnsPosi);
-        } else if (array[rowPosi][columnsPosi] == min) {
+              "The max " + max + " is in the row " + rowNum + " column " + columnNum);
+        } else if (array[rowNum][columnNum] == min) {
           System.out.println(
-              "The min " + min + " is in the row " + rowPosi + " column " + columnsPosi);
+              "The min " + min + " is in the row " + rowNum + " column " + columnNum);
         }
       }
     }
