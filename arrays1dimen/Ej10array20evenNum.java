@@ -28,7 +28,7 @@ public class Ej10array20evenNum {
     /** Showing the array */
     for (int i : array) {
 
-      System.out.print(index + ". " + i + "| ");
+      System.out.println(index + ". " + i + "| ");
 
       index++;
     }

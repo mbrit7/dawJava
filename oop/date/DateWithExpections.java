@@ -1,4 +1,4 @@
-package poo.date;
+package oop.date;
 
 /** @author Manuel Brito */
 public class DateWithExpections {

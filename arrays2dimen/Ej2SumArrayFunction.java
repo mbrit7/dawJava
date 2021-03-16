@@ -13,7 +13,7 @@ public class Ej2SumArrayFunction {
     Scanner s = new Scanner(System.in);
 
     // Init the array
-    int[][] array = new int[4][5];
+    // int[][] array = new int[4][5];
 
     randomNum();
 
@@ -27,11 +27,14 @@ public class Ej2SumArrayFunction {
     //      System.out.print(array);
     //      System.out.println();
     //    }
+
+    s.close();
   }
 
   public static void randomNum() {
     for (int i = 1; i <= 20; i++) {
       int randNum = (int) (Math.random() * 21);
+      System.out.println(randNum);
     }
   }
 }

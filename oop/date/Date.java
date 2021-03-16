@@ -1,7 +1,13 @@
-package poo.date;
+package oop.date;
 
-/** @author Manuel Brito */
-public class Date {
+/**
+ * Class where you can realize different things like check if the date is correct, add and subtract
+ * days to the date, comparing two dates, know if the year of the date is leap and also return the
+ * date in this string format: dd of MM of yy.
+ *
+ * @author Manuel Brito
+ */
+public class Date implements Cloneable, Comparable<Date> {
 
   /** Attributes */
   private int day;
@@ -16,35 +22,22 @@ public class Date {
    *
    * <p>In this program I use 30 days for a month
    */
-  public void isDateCorrect() {
-    if (day < 100 && month < 100 && year < 10000) {
-      if (day < 1 || day > 30) {
-        System.err.println("\nPlease introduce a day between 1 and 30, both including");
-
-      } else if (month < 1 || month > 12) {
-        System.err.println("\nPlease introduce a month between 1 and 12, both including");
-
-      } else if (year < 0) {
-        System.err.println("\nPlease introduce a valid year");
-
-      } else {
-        System.out.println("\nThe date is correct");
-      }
+  public boolean isDateCorrect() {
+    if (day > 0 && day < 31) {
+      return true;
+    }
+    if (month > 0 && month < 13) {
+      return true;
+    }
+    if (year > 0) {
+      return true;
 
     } else {
-      System.err.println("\nPlease introduce number with correct length to the date");
+      return false;
     }
   }
 
-  /**
-   * Function to know the length of year's number
-   *
-   * @return
-   */
-  //  public int showLengthOfYear() {
-  //    int lengthYear = 0;
-  //    return lengthYear;
-  //  }
+  public void addDaysToDate() {}
 
   /**
    * Constructor
@@ -79,37 +72,6 @@ public class Date {
   /** @param month the month to set */
   public void setMonth(int month) {
     this.month = month;
-
-    //      switch (this.month) {
-    //        case 1:
-    //          break;
-    //        case 2:
-    //          break;
-    //        case 3:
-    //          break;
-    //        case 4:
-    //          break;
-    //        case 5:
-    //          break;
-    //        case 6:
-    //          break;
-    //        case 7:
-    //          break;
-    //        case 8:
-    //          break;
-    //        case 9:
-    //          break;
-    //        case 10:
-    //          break;
-    //        case 11:
-    //          break;
-    //        case 12:
-    //          break;
-    //
-    //        default:
-    //          break;
-    //      }
-    //    }
   }
 
   /** @return the year */
@@ -125,5 +87,16 @@ public class Date {
   @Override
   public String toString() {
     return +this.day + " of " + this.month + " of " + this.year;
+  }
+
+  /** Implementation of 'compareTo' interface */
+  @Override
+  public int compareTo(Date d) {
+
+    return this.year - d.year;
+  }
+
+  public Date clone() {
+    return new Date(this.day, this.month, this.year);
   }
 }

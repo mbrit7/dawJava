@@ -1,6 +1,10 @@
-package poo.time;
+package oop.time;
 
-/** @author Manuel Brito */
+/**
+ * @author Manuel Brito
+ *     <p>With this class you can add and subtract another object, add and subtract seconds, minutes
+ *     and hours to an object and also you can show the time in this format (10h 34m 12s).
+ */
 public class Time {
 
   /** Attributes */
@@ -17,12 +21,21 @@ public class Time {
    * @param the object that I will add to another object
    * @return the addition of the objects
    */
-  public Time addObjects(Time object) {
-    this.hours += object.hours;
-    this.minutes += object.minutes;
-    this.seconds += object.seconds;
-    return object;
+  public Time sumToObject(Time object) {
+    return new Time(
+        this.hours + object.hours, this.minutes + object.minutes, this.seconds + object.seconds);
   };
+
+  /**
+   * Function to subtract hours, minutes and seconds of two objects
+   *
+   * @param object
+   * @return
+   */
+  public Time subtractObject(Time object) {
+    return new Time(
+        this.hours - object.hours, this.minutes - object.minutes, this.seconds - object.seconds);
+  }
 
   @Override
   public String toString() {
@@ -37,9 +50,13 @@ public class Time {
    * @param seconds
    */
   public Time(int hours, int minutes, int seconds) {
-    this.hours = hours * 3600;
-    this.minutes = (hours % 3600) * 60;
-    this.seconds = seconds;
+    if (hours < 0 || minutes < 0 || seconds < 0) {
+      System.err.println("\nYou can't introduce a negative number.");
+    }
+    int timeInSeconds = (hours * 3600) + (minutes * 60) + seconds;
+    this.hours = timeInSeconds / 3600;
+    this.minutes = (timeInSeconds % 3600) / 60;
+    this.seconds = timeInSeconds % 60;
   }
 
   /** Getters and Setters */
@@ -51,6 +68,9 @@ public class Time {
 
   /** @param hours the hours to set */
   public void setHours(int hours) {
+    if (hours < 0) {
+      System.err.println("\nYou can't introduce a negative number.");
+    }
     this.hours = hours;
   }
 
@@ -61,6 +81,9 @@ public class Time {
 
   /** @param minutes the minutes to set */
   public void setMinutes(int minutes) {
+    if (minutes < 0) {
+      System.err.println("\nYou can't introduce a negative number.");
+    }
     this.minutes = minutes;
   }
 
@@ -71,6 +94,9 @@ public class Time {
 
   /** @param seconds the seconds to set */
   public void setSeconds(int seconds) {
+    if (seconds < 0) {
+      System.err.println("\nYou can't introduce a negative number.");
+    }
     this.seconds = seconds;
   }
 }

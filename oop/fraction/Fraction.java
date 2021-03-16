@@ -1,7 +1,7 @@
-package poo.fraction;
+package oop.fraction;
 
 /** @author Manuel Brito */
-public class Fraction {
+public class Fraction implements Cloneable, Comparable<Fraction> {
 
   /** Attributes */
   private int numerator;
@@ -19,17 +19,6 @@ public class Fraction {
     return (double) this.numerator / this.denominator;
   }
 
-  /** Function to show the result of a fraction with exceptions */
-  //  public void showResultFraction() {
-  //    try {
-  //      System.out.println((double) this.numerator / this.denominator);
-  //
-  //    } catch (Exception e) {
-  //      System.out.println("Exception --> " + e.getClass());
-  //      System.out.println("Error --> " + e.getMessage());
-  //      System.out.println("Introduce another denominator number.");
-  //    }
-  //  }
   /**
    * Function that multiply a number to the fraction
    *
@@ -43,14 +32,23 @@ public class Fraction {
   /**
    * Function to multiply two fractions
    *
-   * @param numerator the numerator of the fraction to multiply
-   * @param denominator the denominator of the fraction to multiply
-   * @return a fraction multiplied with the other fraction
+   * @param f the fraction to multiply
+   * @return a fraction multiplied with the 'f' fraction
    */
   // For make the code more legible,
   // I create another method with a different name to multiply
-  public Fraction multiplyWithAFraction(int numerator, int denominator) {
-    return new Fraction(this.numerator * numerator, this.denominator * denominator);
+  public Fraction multiplyTwoFractions(Fraction f) {
+    return new Fraction(this.numerator * f.numerator, this.denominator * f.denominator);
+  }
+
+  /**
+   * Function to divide two fractions
+   *
+   * @param f the fraction to divide
+   * @return a fraction divided with the 'f' fraction
+   */
+  public Fraction divideTwoFractions(Fraction f) {
+    return new Fraction(this.numerator * f.denominator, this.denominator * f.numerator);
   }
 
   /**
@@ -71,7 +69,7 @@ public class Fraction {
    */
   @Override
   public String toString() {
-    return "\nThe numerator is " + numerator + " and the denominator is " + denominator;
+    return "\nThe fraction is: " + this.numerator + "/" + this.denominator;
   }
 
   /** Getters and Setters */
@@ -92,11 +90,17 @@ public class Fraction {
   }
 
   /** @param denominator the denominator to set */
-  public void setDenominator(int denominator) {
-    if (denominator == 0) {
-      System.err.println("\nThe denominator can't be 0");
-    } else {
+  public void setDenominator(int denominator) throws ArithmeticException {
+    try {
       this.denominator = denominator;
+
+    } catch (ArithmeticException ae) {
+      throw ae;
     }
+  }
+
+  @Override
+  public int compareTo(Fraction f) {
+    return 0;
   }
 }
