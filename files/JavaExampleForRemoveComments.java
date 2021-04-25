@@ -7,7 +7,7 @@ package files;
 
 import java.util.Scanner;
 
-public class JavaExample {
+public class JavaExampleForRemoveComments {
 
   public static void main(String[] args) {
 
