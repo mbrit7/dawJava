@@ -44,6 +44,7 @@ public class JavaExampleForRemoveComments {
       System.out.println("Month " + monthNum);
       monthNum++;
 
+      // Bloque if
       if (i < 0) {
         for (int j = 0; j < i; j++) {
 
